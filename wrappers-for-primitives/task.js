@@ -1,3 +1,6 @@
+// Задача 1
+"use strict";
+
 function calculateMortgage() {
     let percent = window.percent.value;
     let contribution = window.contribution.value;
@@ -10,11 +13,19 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-
-    // код для задачи №1 писать здесь
-    //return totalAmount;
+    percent /= 100;
+    let p = percent / 12;
+    let nowDate = new Date();
+    let monthAmount = Math.round((Date.parse(date) - Date.parse(nowDate))/1000/60/60/24/30);
+    let creditSum = amount - contribution;
+    let paymentMonth = creditSum * (p + p / (((1 + p) ** monthAmount) - 1));
+    let totalAmount = paymentMonth * monthAmount;
+    console.log(totalAmount.toFixed(2));
+    return totalAmount.toFixed(2);
 }
 
+
+// Задача 2
 function sayHello() {
     let name = window.personName.value;
     let greeting = getGreeting(name);
@@ -23,6 +34,11 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+    if (name == "" || name == "null" || name == "undefined") {
+        console.log(`Привет, мир! Меня зовут Аноним.`);
+        return `Привет, мир! Меня зовут Аноним.`;
+    } else {
+        console.log(`Привет, мир! Меня зовут ${name}.`);
+        return `Привет, мир! Меня зовут ${name}.`;        
+    }
 }
