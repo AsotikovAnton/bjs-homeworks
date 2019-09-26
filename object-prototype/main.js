@@ -12,7 +12,7 @@ function checkBirthday(birthday) {
     let date = new Date(birthday);
     birthday = +date;
     let diff = now - birthday;
-    let age = Math.floor(diff / 1000 / 60 / 60 / 24 / ((365 * 4) + 1) * 4);
+    let age = Math.floor(diff / 1000 / 60 / 60 / 24 / 365.25);
     return (age >= 18);
 }
 
@@ -30,7 +30,7 @@ function initPrintAnimalSound() {
 
 function getAnimalSound(animal) {
     let sound = animal.sound;
-    if (animal === undefined) {
+    if (!animal) {
         return null;
     } else {
         return sound;
